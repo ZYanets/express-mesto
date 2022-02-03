@@ -1,7 +1,7 @@
 {
   "name": "express-mesto",
   "version": "1.0.0",
-  "description": "Server for the project Mesto",
+  "description": "Back-end for the project Mesto",
   "main": "index.js",
   "scripts": {
     "lint": "npx eslint .",
