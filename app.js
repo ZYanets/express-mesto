@@ -10,6 +10,7 @@ const {
   validateCreateUser,
 } = require('./middlewares/validation');
 const { login, createUser } = require('./controllers/users');
+const NotFoundError = require('./errors/not-found-error');
 
 const { PORT = 3000 } = process.env;
 const app = express();
@@ -24,8 +25,8 @@ app.use(auth);
 app.use('/users', require('./routes/users'));
 app.use('/cards', require('./routes/cards'));
 
-app.use('*', (req, res) => {
-  res.status(404).send({ message: 'Страница не найдена' });
+app.use('*', () => {
+  throw new NotFoundError('Страница не найдена');
 });
 
 app.use(errors());
